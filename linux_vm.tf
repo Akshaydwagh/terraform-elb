@@ -1,13 +1,13 @@
 resource "aws_instance" "linux_vm" {
-    ami                         = "ami-0cc293023f983ed53"
-    availability_zone           = "eu-central-1b"
+    ami                         = "ami-0d4c3eabb9e72650a"
+    availability_zone           = "eu-central-1a"
     ebs_optimized               = false
     instance_type               = "t2.micro"
     monitoring                  = false
-    key_name                    = "${var.aws_key}"
+    key_name                    = "${var.key}"
     subnet_id                   = "${var.aws_subnet}"
     source_dest_check = false
-    vpc_security_group_ids      = ["${aws_security_group.sec-grp.id}"]
+    vpc_security_group_ids      = ["sg-963bbef3"]
     associate_public_ip_address = true
     user_data = "${file("user-data.sh")}"
     root_block_device {
